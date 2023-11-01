@@ -1,9 +1,8 @@
-import {CardSearchTemplate} from "../../../../shared/ui/cardSearchTemplate/cardSearchTemplate";
-import {DataView} from "primereact/dataview";
-import {ISearch} from "../../../../shared/helpers/models/ISearch";
-import './searchesTiles.scss'
 import {SearchField} from "../../searchField/ui/searchField";
-
+import {ISearch} from "../../../../shared/helpers/models/ISearch";
+import {CardSearchTemplate} from "../../../../shared/ui/cardSearchTemplate/cardSearchTemplate";
+import './searchesTiles.scss';
+import {TileDataView} from "../../../../shared/ui/TileDataView/ui/TileDataView";
 export const SearchesTiles = () => {
 
     const templateMapper = (item : ISearch) =>{
@@ -24,7 +23,7 @@ export const SearchesTiles = () => {
     return (
         <>
             <div className={'tiles-container'}>
-                <DataView value={values} layout={'grid'} header={<SearchField/>} itemTemplate={templateMapper}/>
+                <TileDataView values={values} layout={'grid'} header={<SearchField/>} templateMapper={templateMapper}/>
             </div>
         </>
     )

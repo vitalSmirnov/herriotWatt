@@ -39,7 +39,7 @@ export const UsersTree = ({projectId} :IUsersTreeProps) => {
 
     return(
         <>
-            <Tree value={nodes} />
+            <Tree value={nodes} className={'w-25rem'}/>
         </>
     )
 }

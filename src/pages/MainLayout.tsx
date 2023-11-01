@@ -14,7 +14,9 @@ export const MainLayout = () => {
     return (
         <>
             <Suspense fallback={<ProgressSpinner/>}>
-                <Outlet/>
+                <div className={'mr-7 ml-7'}>
+                    <Outlet/>
+                </div>
             </Suspense>
         </>
     )
