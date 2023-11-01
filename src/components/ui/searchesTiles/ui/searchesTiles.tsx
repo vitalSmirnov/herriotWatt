@@ -14,7 +14,7 @@ export const SearchesTiles = () => {
 
     const values = [
         {
-            id: "",
+            id: '0',
             title: 'title',
             dateTime: '2023-10-31',
             img: '',

@@ -1,9 +1,7 @@
 import React from "react";
 import {IRoute} from "../types/types";
 import {SearchesPage} from "../../../pages/Searches/ui/SearchesPage";
-
-
-// const Users = React.lazy(() => import('./Pages/Users/UsersPage'));
+import {SearchPage} from "../../../pages/Search/ui/SearchPage";
 
 
 export const protectedRoutes: Array<IRoute> = [
@@ -13,9 +11,9 @@ export const protectedRoutes: Array<IRoute> = [
         element: <SearchesPage/>
     },
     {
-        path: '/search/:id',
+        path: '/search/:searchId',
         title: 'Исследование',
-        element: <></>,
+        element: <SearchPage/>,
     },
 ];
 
