@@ -1,0 +1,19 @@
+.card-search-template-container{
+  padding: 1rem;
+  width: fit-content;
+}
+.card-search-template-inner{
+  padding: 4rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+.card-search-add-btn{
+  display: flex;
+  justify-content: center;
+}
+.card-search-template-description{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
