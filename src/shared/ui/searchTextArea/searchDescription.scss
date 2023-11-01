@@ -1,0 +1,14 @@
+.search-description-main-container{
+  padding: 0 1rem;
+}
+
+.search-description-border{
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid gray;
+  border-radius: 10px;
+  height: 80vh;
+  width: 30vw;
+}

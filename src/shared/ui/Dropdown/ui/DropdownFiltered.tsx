@@ -2,6 +2,7 @@ import {Dropdown} from "primereact/dropdown";
 import {UserProps, UsersListProps} from "../helpers/types";
 import {useState} from "react";
 import { PrimeIcons } from 'primereact/api';
+import {MultiSelect} from "primereact/multiselect";
 
 export const DropdownFiltered = ({users} : UsersListProps) => {
     const [User, setSelectedUser] = useState(null);
@@ -29,7 +30,7 @@ export const DropdownFiltered = ({users} : UsersListProps) => {
     };
 
     return (
-        <Dropdown value={User} multiple={true} onChange={(e) => setSelectedUser(e.value)} options={users} optionLabel="name" placeholder="Select a Country"
-                  filter valueTemplate={selectedValuesTemplate} itemTemplate={valuesMapper} className="w-full mt-2" />
+        <MultiSelect  value={User} multiple={true} onChange={(e) => setSelectedUser(e.value)} options={users} optionLabel="name" placeholder="Select a Country"
+                  filter itemTemplate={valuesMapper} className="w-full mt-2" />
     )
 }
