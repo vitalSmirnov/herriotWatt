@@ -1,0 +1,12 @@
+.img-page-main-container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.img-page-bordered{
+  border: 1px solid gray;
+  border-radius: 10px;
+}
