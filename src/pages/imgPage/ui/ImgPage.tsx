@@ -9,8 +9,13 @@ import {useEffect, useState} from "react";
 export const ImgPage = () => {
 
     const [image, setImage] = useState(null);
+    const [isClear, setClear] = useState(false);
     const handleImageUploadCallback = (image: any) => {
         setImage(image)
+    }
+
+    const clearCanvasCallback = () => {
+        setClear(!isClear)
     }
 
     const fetchedValues : IMaterial[] = [
@@ -32,8 +37,8 @@ export const ImgPage = () => {
                 <div className={'card flex justify-content-between mt-5 w-100'}>
                     <SearchDescription description={'Описание проекта'}/>
                     <div className={'w-full img-page-bordered'}>
-                        <ImgHeader handleImageUploadCallback={handleImageUploadCallback}/>
-                        {image && <Drawer image={image}/>}
+                        <ImgHeader handleImageUploadCallback={handleImageUploadCallback} clearCanvasCallback={clearCanvasCallback}/>
+                        {image && <Drawer isClear={isClear} image={image} clearCallback={clearCanvasCallback} />}
                     </div>
                 </div>
                 <div className={'w-full flex justify-content-center mb-5'}>

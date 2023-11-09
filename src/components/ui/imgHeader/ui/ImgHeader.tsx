@@ -1,10 +1,11 @@
 import {Button} from "primereact/button";
 
 interface ImgHeaderProps{
-    handleImageUploadCallback: (image: any) => void
+    handleImageUploadCallback: (image: any) => void,
+    clearCanvasCallback: () => void
 }
 
-export const ImgHeader = ({handleImageUploadCallback} : ImgHeaderProps) => {
+export const ImgHeader = ({handleImageUploadCallback, clearCanvasCallback} : ImgHeaderProps) => {
 
     const imageUploadHandler = (image: any) => {
         handleImageUploadCallback(image)
@@ -29,6 +30,7 @@ export const ImgHeader = ({handleImageUploadCallback} : ImgHeaderProps) => {
         <div>
             <Button className={'m-3'} rounded severity={'warning'} label={'Указать материал'}/>
             <Button className={'m-3'} rounded severity={'warning'} label={'Сегментировать'}/>
+            <Button severity={'danger'} label={'Отчистить аннотации'} onClick={clearCanvasCallback}/>
             <input type="file" accept="image/*" onChange={handleImageUpload}/>
         </div>
     )

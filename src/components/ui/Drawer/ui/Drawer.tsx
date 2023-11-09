@@ -1,8 +1,14 @@
 import {useEffect, useRef, useState} from "react";
 import {DotObject, Material} from "../helpers/types/types";
+import {Button} from "primereact/button";
 
+interface DrawerProps{
+    image: string | null,
+    clearCallback: () => void,
+    isClear: boolean
+}
 
-export const Drawer = ({ image }: { image: string | null }) => {
+export const Drawer = ({ image, clearCallback, isClear }: DrawerProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [startDot, setStartDot] = useState<DotObject | null>(null)
     const [materialData, setMaterialData] = useState<Material[]>([])
@@ -10,6 +16,7 @@ export const Drawer = ({ image }: { image: string | null }) => {
     const startDotHandle = (payload: DotObject) => {
         setStartDot(payload);
     };
+
     const lineDrawHandler = (ctx: CanvasRenderingContext2D) => {
         const copyMaterial = [...materialData]
         const last_material = copyMaterial.pop()
@@ -22,6 +29,24 @@ export const Drawer = ({ image }: { image: string | null }) => {
             ctx.closePath();
         })
     }
+    useEffect(() => {
+        const canvas = canvasRef.current!;
+        const ctx = canvas.getContext('2d')!;
+
+        if (isClear) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            clearCallback()
+        }
+        if (image) {
+            const background = new Image();
+
+            background.onload = () => {
+                ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+            };
+
+            background.src = image;
+        }
+    }, [isClear]);
 
     useEffect(() => {
         const canvas = canvasRef.current!;
