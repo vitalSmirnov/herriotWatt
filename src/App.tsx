@@ -2,6 +2,7 @@ import React, {Suspense} from 'react';
 import './App.css';
 
 import {Navigate, useRoutes} from "react-router-dom";
+
 import {protectedRoutes} from "./shared/helpers/routes/routes.tx";
 import {MainLayout} from "./pages/MainLayout";
 import {LoginPage} from "./pages/Login/ui/LoginPage";
