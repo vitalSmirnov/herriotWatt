@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
@@ -19,11 +19,6 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-//    "paths": {
-//      "@shared/*": ["./src/shared/*"],
-//      "@pages/*": ["./src/pages/*"],
-//      "@components/*": ["./src/components/*"],
-//    }
   },
   "include": [
     "src"

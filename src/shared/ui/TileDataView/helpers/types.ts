@@ -1,7 +1,7 @@
 import {JSX, ReactNode} from "react";
-import {ISearch} from "../../../helpers/models/ISearch";
+import {ISearch} from "../../../../entities/models/ISearch";
 import {IImageProps} from "../../../../pages/Search/helpers/types";
-import {IMaterial} from "../../../helpers/models/IMaterial";
+import {IMaterial} from "../../../../entities/models/IMaterial";
 
 export interface ITileDataView{
     values: any[],

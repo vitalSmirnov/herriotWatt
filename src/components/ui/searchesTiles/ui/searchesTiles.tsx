@@ -1,5 +1,5 @@
 import {SearchField} from "../../searchField/ui/searchField";
-import {ISearch} from "../../../../shared/helpers/models/ISearch";
+import {ISearch} from "../../../../entities/models/ISearch";
 import {CardSearchTemplate} from "../../../../shared/ui/cardSearchTemplate/cardSearchTemplate";
 import './searchesTiles.scss';
 import {TileDataView} from "../../../../shared/ui/TileDataView/ui/TileDataView";

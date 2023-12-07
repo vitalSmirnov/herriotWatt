@@ -2,7 +2,7 @@ import {useParams} from "react-router-dom";
 import {Button} from "primereact/button";
 import {SearchDescription} from "../../../shared/ui/searchTextArea/searchDescription";
 import './imgPage.scss'
-import {IMaterial} from "../../../shared/helpers/models/IMaterial";
+import {IMaterial} from "../../../entities/models/IMaterial";
 import {ImgHeader} from "../../../components/ui/imgHeader/ui/ImgHeader";
 import {Drawer} from "../../../components/ui/Drawer/ui/Drawer";
 import {useEffect, useState} from "react";
@@ -21,7 +21,6 @@ export const ImgPage = () => {
     const fetchedValues : IMaterial[] = [
         {
             id: '0',
-            img: '',
             description: 'description',
             name: 'name',
         },

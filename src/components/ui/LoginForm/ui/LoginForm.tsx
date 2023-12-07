@@ -5,6 +5,7 @@ import {Button} from "primereact/button";
 import './LoginForm.scss'
 import {useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../../shared/helpers/hooks/redux";
+import {login} from "../../../../domain/repositories/api/auth/actionCreators/authActionCreator";
 
 export const LoginForm = () => {
     const {error, token, isLoading} = useAppSelector(state => state.authReducer);
@@ -20,12 +21,10 @@ export const LoginForm = () => {
     }
 
     const onFinish = () => {
-        // dispatch(login({
-        //     "email" : email,
-        //     "password" : password
-        // }));
-        sessionStorage.setItem('token', 'token')
-        navigate('/searches')
+        dispatch(login({
+            "email" : email,
+            "password" : password
+        }));
     }
 
     const passwordHandler = (value : string)=>{

@@ -1,4 +1,4 @@
-import {ISearch} from "../../helpers/models/ISearch";
+import {ISearch} from "../../../entities/models/ISearch";
 import "./CardSearchTemplate.scss"
 import {SquareTile} from "../squareTile/SquareTile";
 
