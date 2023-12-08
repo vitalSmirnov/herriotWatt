@@ -21,10 +21,7 @@ export const LoginForm = () => {
     }
 
     const onFinish = () => {
-        dispatch(login({
-            "email" : email,
-            "password" : password
-        }));
+        dispatch(login({email, password}))
     }
 
     const passwordHandler = (value : string)=>{
@@ -36,10 +33,10 @@ export const LoginForm = () => {
     }
 
     useEffect(() => {
-        if (error === "" && token !== ''){
-            navigate('/')
+        if (token !== null){
+            navigate('/searches')
         }
-    }, [token, error]);
+    }, [token]);
 
     return(
         <>

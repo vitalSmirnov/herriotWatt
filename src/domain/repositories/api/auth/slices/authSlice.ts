@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {login, logout, register} from "../actionCreators/authActionCreator";
-import {ILoginResponse, ILogoutResponse, IRegisterResponse} from "../dataSource/ILoginDataSource";
+import {login, logout, refresh, register} from "../actionCreators/authActionCreator";
+import {ILoginResponse, ILogoutResponse, IRefreshResponse, IRegisterResponse} from "../dataSource/ILoginDataSource";
 
 
 interface IAuth{
@@ -12,7 +12,7 @@ interface IAuth{
 
 
 const initialState: IAuth = {
-    token: '',
+    token: null,
     refreshToken: '',
     isLoading: false,
     error: ''
@@ -67,6 +67,15 @@ export const authorizationsSlice = createSlice({
         },
         [logout.fulfilled.type]: (state, action: PayloadAction<ILogoutResponse>)=> {
             state.token = null;
+            state.isLoading = false;
+            state.error = '';
+        },
+
+        [refresh.fulfilled.type]: (state, action: PayloadAction<IRefreshResponse>)=> {
+            state.token = action.payload.token;
+            state.refreshToken = action.payload.refreshToken;
+            sessionStorage.setItem("token", action.payload.token);
+            sessionStorage.setItem("refreshToken", action.payload.refreshToken);
             state.isLoading = false;
             state.error = '';
         },

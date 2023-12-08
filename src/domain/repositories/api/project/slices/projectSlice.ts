@@ -10,7 +10,7 @@ import {
 } from "../actionCreators/projectActionCreator";
 import {
     ICreateProjectResponse, IDeleteProjectResponse,
-    IGetDetailsProjectPayload,
+    IGetDetailsProjectPayload, IGetDetailsProjectResponse,
     IGetProjectsResponse, IUpdateProjectResponse
 } from "../dataSource/IProjectDataSource";
 
@@ -51,6 +51,7 @@ export const projectSlice = createSlice({
             state.isLoading = false;
         },
         [getProjectList.fulfilled.type]: (state, action: PayloadAction<IGetProjectsResponse>)=> {
+            state.projects = [...action.payload.projects]
             state.isLoading = false;
             state.error = null;
 
@@ -64,7 +65,8 @@ export const projectSlice = createSlice({
             state.error = action.payload;
             state.isLoading = false;
         },
-        [getProjectDetailed.fulfilled.type]: (state, action: PayloadAction<IGetDetailsProjectPayload>)=> {
+        [getProjectDetailed.fulfilled.type]: (state, action: PayloadAction<IGetDetailsProjectResponse>)=> {
+            state.projectDetailed = {...action.payload.project}
             state.isLoading = false;
             state.error = null;
 

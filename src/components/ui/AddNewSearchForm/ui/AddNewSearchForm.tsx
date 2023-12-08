@@ -5,19 +5,24 @@ import {useState} from "react";
 import {DropdownFiltered} from "../../../../shared/ui/Dropdown/ui/DropdownFiltered";
 import {UserProps} from "../../../../shared/ui/Dropdown/helpers/types";
 import './AddNewForm.scss'
+import {useAppDispatch} from "../../../../shared/helpers/hooks/redux";
+import {
+    createProject,
+    getProjectList
+} from "../../../../domain/repositories/api/project/actionCreators/projectActionCreator";
 
 
 export const AddNewSearchForm = () => {
 
     const [IsOpen, setIsOpen] = useState(false)
     const [name, setName] = useState('')
+    const [description, setDesc] = useState('')
+    const dispatch = useAppDispatch()
 
 
     const onFinish = () => {
-        // dispatch(login({
-        //     "email" : email,
-        //     "password" : password
-        // }));
+        dispatch(createProject({name, description}))
+        dispatch(getProjectList())
     }
 
     const fetchedUsers : UserProps[] = [
@@ -36,6 +41,9 @@ export const AddNewSearchForm = () => {
     const nameHandler = (value : string)=>{
         setName(value)
     }
+    const descriptionHandler = (value : string)=>{
+        setDesc(value)
+    }
 
     return (
         <>
@@ -43,6 +51,11 @@ export const AddNewSearchForm = () => {
                 <span className="add-new-form-label">Название исследования</span>
                 <InputText placeholder="название" value={name}
                            onChange={(e) => nameHandler(e.currentTarget.value)}/>
+            </div>
+            <div className={'input-group display-col'}>
+                <span className="add-new-form-label">Описание</span>
+                <InputText placeholder="описание" value={description}
+                           onChange={(e) => descriptionHandler(e.currentTarget.value)}/>
             </div>
 
             <div className={'add-new-form-input-group'}>

@@ -34,8 +34,8 @@ export const register = createAsyncThunk(
 
 export const refresh = createAsyncThunk(
     'user/refresh',
-    async (payload: IRefreshPayload, thunkAPI) => {
-        return await axiosInstance.user.post<Promise<IRefreshResponse>>('user/refresh', payload)
+    async (_, thunkAPI) => {
+        return await axiosInstance.user.post<Promise<IRefreshResponse>>('user/refresh', sessionStorage.getItem('refreshToken'))
             .then(response => response.data)
             .catch(error => {
                 return thunkAPI.rejectWithValue(error)

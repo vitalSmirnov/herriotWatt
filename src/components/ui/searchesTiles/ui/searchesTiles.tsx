@@ -1,30 +1,36 @@
 import {SearchField} from "../../searchField/ui/searchField";
-import {ISearch} from "../../../../entities/models/ISearch";
 import {CardSearchTemplate} from "../../../../shared/ui/cardSearchTemplate/cardSearchTemplate";
 import './searchesTiles.scss';
 import {TileDataView} from "../../../../shared/ui/TileDataView/ui/TileDataView";
+import {useAppDispatch, useAppSelector} from "../../../../shared/helpers/hooks/redux";
+import {useEffect} from "react";
+import {getProjectList} from "../../../../domain/repositories/api/project/actionCreators/projectActionCreator";
+import {ProgressSpinner} from "primereact/progressspinner";
+import {IProject} from "../../../../entities/models/Project/IProject";
 export const SearchesTiles = () => {
 
-    const templateMapper = (item : ISearch) =>{
+
+    const {projects, isLoading} = useAppSelector(state => state.projectReducer);
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(getProjectList())
+    }, []);
+
+    const templateMapper = (item : IProject) =>{
         return (
-            <CardSearchTemplate id={item.id} title={item.title} dateTime={item.dateTime} key={item.id} img={item.img} description={item.description}/>
+            <CardSearchTemplate id={item.id} name={item.name} dateTime={item.created_at} key={item.id} description={item.description}/>
         )
     }
 
-    const values = [
-        {
-            id: '0',
-            title: 'title',
-            dateTime: '2023-10-31',
-            img: '',
-            description: 'description'
-        }
-    ]
     return (
         <>
-            <div className={'tiles-container'}>
-                <TileDataView values={values} layout={'grid'} header={<SearchField/>} templateMapper={templateMapper}/>
-            </div>
+            { !isLoading?
+                <div className={'tiles-container'}>
+                    <TileDataView values={projects} layout={'grid'} header={<SearchField/>} templateMapper={templateMapper}/>
+                </div>:
+                <ProgressSpinner/>
+            }
         </>
     )
 }
