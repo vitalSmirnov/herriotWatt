@@ -1,9 +1,15 @@
 import {combineReducers} from 'redux';
-import authReducer from "../slices/authSlice";
+import authReducer from "../auth/slices/authSlice";
+import materialReducer from "../material/slices/materialSlice";
+import projectReducer from "../project/slices/projectSlice";
+import segmentationReducer from "../segmentation/slices/segmentSlice";
 import {configureStore} from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
-    authReducer
+    authReducer,
+    segmentationReducer,
+    materialReducer,
+    projectReducer
 })
 
 export const setupStore = () => {

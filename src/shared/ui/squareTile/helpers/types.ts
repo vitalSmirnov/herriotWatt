@@ -1,4 +1,4 @@
 export interface ISquareTile{
-    link: string,
+    link?: string,
     photo?: string,
 }

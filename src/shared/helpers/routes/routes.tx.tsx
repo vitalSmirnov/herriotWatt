@@ -12,7 +12,7 @@ export const protectedRoutes: Array<IRoute> = [
         element: <SearchesPage/>
     },
     {
-        path: '/search/:searchId',
+        path: '/search/:projectId',
         title: 'Исследование',
         element: <SearchPage/>,
     },

@@ -5,7 +5,7 @@ import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import { PrimeReactProvider } from 'primereact/api';
 import {Provider} from "react-redux";
-import {setupStore} from "./shared/helpers/store/store";
+import {setupStore} from "./domain/repositories/api/store/store";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';

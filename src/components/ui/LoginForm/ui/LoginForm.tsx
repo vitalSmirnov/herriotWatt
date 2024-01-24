@@ -5,6 +5,7 @@ import {Button} from "primereact/button";
 import './LoginForm.scss'
 import {useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../../shared/helpers/hooks/redux";
+import {login} from "../../../../domain/repositories/api/auth/actionCreators/authActionCreator";
 
 export const LoginForm = () => {
     const {error, token, isLoading} = useAppSelector(state => state.authReducer);
@@ -20,12 +21,7 @@ export const LoginForm = () => {
     }
 
     const onFinish = () => {
-        // dispatch(login({
-        //     "email" : email,
-        //     "password" : password
-        // }));
-        sessionStorage.setItem('token', 'token')
-        navigate('/searches')
+        dispatch(login({email, password}))
     }
 
     const passwordHandler = (value : string)=>{
@@ -37,10 +33,10 @@ export const LoginForm = () => {
     }
 
     useEffect(() => {
-        if (error === "" && token !== ''){
-            navigate('/')
+        if (token !== null){
+            navigate('/searches')
         }
-    }, [token, error]);
+    }, [token]);
 
     return(
         <>
@@ -54,7 +50,7 @@ export const LoginForm = () => {
             </div>
             <div className={'input-group display-col'}>
                 <span className="login-form-label">Пароль</span>
-                <InputText placeholder="password" value={password}
+                <InputText type={'password'} placeholder="password" value={password}
                            onChange={(e) => passwordHandler(e.currentTarget.value)}/>
             </div>
 

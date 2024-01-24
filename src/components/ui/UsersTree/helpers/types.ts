@@ -1,4 +1,4 @@
-import {IUserModel} from "../../../../shared/helpers/models/IUserModel";
+import {IUserModel} from "../../../../entities/models/Users/IUserModel";
 
 interface Photo{
     id: string,
