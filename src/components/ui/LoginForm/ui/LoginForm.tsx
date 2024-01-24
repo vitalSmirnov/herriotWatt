@@ -50,7 +50,7 @@ export const LoginForm = () => {
             </div>
             <div className={'input-group display-col'}>
                 <span className="login-form-label">Пароль</span>
-                <InputText placeholder="password" value={password}
+                <InputText type={'password'} placeholder="password" value={password}
                            onChange={(e) => passwordHandler(e.currentTarget.value)}/>
             </div>
 

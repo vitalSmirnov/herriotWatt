@@ -7,6 +7,10 @@ interface AddPhotoPayload {
     name: string
     description: string
 }
+export interface ICoords {
+    cord_x: number
+    cord_y: number
+}
 
 export interface IGetPhotoPayload {
     photoId: string
@@ -25,6 +29,9 @@ export interface IAddPhotoProjectPayload {
     projectId: string
     bucket: string
     payload: AddPhotoPayload
+    file: File
+    name: string
+    description: string
 }
 export interface IAddPhotoProjectResponse extends IResponse{
 }
@@ -35,7 +42,9 @@ export interface ICreateSegmentPayload {
     payload: ICoordination[]
 }
 export interface ICreateSegmentResponse extends IResponse{
-    ID: string
+    photoId: string
+    mineralId: string
+    payload: ICoords[]
 }
 
 export interface IDeleteSegmentPayload {

@@ -1,8 +1,5 @@
 import axios from "axios";
 import {base_urls} from "../BaseUrl";
-import {ILoginResponse, IRefreshResponse} from "../auth/dataSource/ILoginDataSource";
-import {refresh} from "../auth/actionCreators/authActionCreator";
-import {useAppDispatch} from "../../../../shared/helpers/hooks/redux";
 
 const LOGIN_TOKEN_URL = `${base_urls.user}/user/login`
 const REFRESH_TOKEN_URL = `${base_urls.user}/user/refresh`
@@ -30,7 +27,7 @@ mainInstance.interceptors.response.use((response) => response,
         if (error.response?.status === 401
             && originalRequest.url !== LOGIN_TOKEN_URL
         ) {
-            return userInstance.post('user/refresh', {refreshToken :sessionStorage.getItem('refreshToken')})
+            return userInstance.post('user/refresh', {refreshToken: sessionStorage.getItem('refreshToken')})
                 .then((response) => {
                     const newToken = response.data.token
                     sessionStorage.setItem('token', newToken);

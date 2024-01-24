@@ -66,11 +66,9 @@ export const projectSlice = createSlice({
             state.isLoading = false;
         },
         [getProjectDetailed.fulfilled.type]: (state, action: PayloadAction<IGetDetailsProjectResponse>)=> {
-            state.projectDetailed = {...action.payload.project}
+            state.projectDetailed = action.payload.project;
             state.isLoading = false;
             state.error = null;
-
-
         },
 
         [createProject.pending.type]: (state)=> {

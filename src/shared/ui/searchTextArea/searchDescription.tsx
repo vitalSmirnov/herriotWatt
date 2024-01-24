@@ -3,11 +3,14 @@ import {IDescriptionProps} from "./helpers/types";
 import {useState} from "react";
 import {Button} from "primereact/button";
 import './searchDescription.scss'
+import {useAppDispatch} from "../../helpers/hooks/redux";
+import {updateProject} from "../../../domain/repositories/api/project/actionCreators/projectActionCreator";
 
-export const SearchDescription = ({description, name}: IDescriptionProps) => {
+export const SearchDescription = ({description, name, projectId}: IDescriptionProps) => {
     const [desc, setDesc] = useState(description)
+    const dispatch = useAppDispatch()
     const editHandler = () => {
-        console.log(desc)
+        dispatch(updateProject({projectId: projectId, payload:{name: name, description: desc}}))
     }
 
     return(
